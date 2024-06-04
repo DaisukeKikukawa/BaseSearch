@@ -41,8 +41,31 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Use Sass to process CSS
+gem 'sassc-rails'
+
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+gem 'bootstrap', '~> 5.3.1'
+
+# ページネーション
+gem 'pagy', '~> 6.4'
+
+# calendar
+gem 'simple_calendar'
+
+# 検索ロジック
+gem 'ransack'
+
+# metaタグ
+gem 'meta-tags'
+
+gem 'faker'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
