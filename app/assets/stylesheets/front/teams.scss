@@ -1,0 +1,51 @@
+#offcanvas-width {
+  width: 350px;
+}
+
+/* チームトップ */
+.team-inner {
+  margin-top: 120px;
+}
+
+.sns_logo {
+  width: 25px;
+}
+
+.team_logo {
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.uniform-wrap {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.team_uniform {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.detail {
+  line-height: 1.3;
+}
+
+.logo-wrap {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.email_icon {
+  width: 18px;
+  height: 18px;
+  background-image: url("copy_line.png");
+  background-size: cover;
+  display: inline-block;
+  transform: translate(0, 3px);
+}

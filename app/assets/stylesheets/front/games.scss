@@ -1,0 +1,79 @@
+.game-list {
+  margin: 0;
+}
+
+.game-list li {
+  padding: 15px 0;
+}
+
+.game-list li:not(:last-child) {
+  border-bottom: 1px solid #e9e9e9
+}
+
+.game-list li .game-info {
+  position: relative;
+}
+
+.game-info .game-info-tag {
+  line-height: 110%;
+  border-radius:20px;
+  position: absolute;
+  top: -1rem;
+}
+
+.game-info {
+  .tag-color-featured {
+    color:#333;
+    background-color: #FFE200;
+  }
+
+  .tag-color-final {
+    color:#333;
+    background-color: #E0CA82;
+  }
+
+  .tag-color-semi-final {
+    color:#333;
+    background-color: #BDC3C9;
+  }
+
+  .tag-color-live {
+    color:#fff;
+    background-color: #2BD1B0;
+  }
+
+  .tag-color-movie {
+    color: #B21920;
+    background-color: #fff;
+    outline: 1px solid #B21920;
+    outline-offset: -1px;
+  }
+
+  .team-link {
+    color: #1a76ff;
+    font-weight: bold;
+  }
+}
+
+.team-name-width {
+  width: 140px;
+}
+
+.game-info-width {
+  width: 170px;
+}
+
+#game-filter-wrapper {
+  height: 35px;
+  backdrop-filter: blur(10px);
+}
+
+// 試合詳細
+.related-teams-section {
+  .team-link {
+    color: blue;
+  }
+  ul {
+    list-style: disc;
+  }
+}
