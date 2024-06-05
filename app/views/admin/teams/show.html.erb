@@ -1,0 +1,31 @@
+<h1>チーム詳細</h1>
+
+<div class="row">
+  <div class="card mt-4 mb-4 pt-4" style="width: 40rem;">
+    <%= render partial: 'team_record', locals: { title: 'ID', content: @team.id } %>
+    <%= render partial: 'team_record', locals: { title: 'チーム名', content: @team.name } %>
+    <%= render partial: 'team_record', locals: { title: 'チームカテゴリー', content: @team.team_category.name } %>
+    <%= render partial: 'admin/shared/display_image', locals: { title: 'チーム画像', image: @team.team_image, resize: 400 } %>
+    <%= render partial: 'admin/shared/display_image', locals: { title: 'チームアイコン', image: @team.team_icon, resize: 200 } %>
+    <%= render partial: 'admin/shared/display_image', locals: { title: 'チームロゴ', image: @team.team_logo, resize: 200 } %>
+    <%= render partial: 'admin/shared/display_image', locals: { title: 'ユニフォーム画像', image: @team.team_uniform, resize: 400 } %>
+    <%= render partial: 'team_record', locals: { title: '募集ポジション', content: @team.recruitment_position } %>
+    <%= render partial: 'team_record', locals: { title: 'チーム紹介内容', content: @team.team_introduction } %>
+    <%= render partial: 'team_record', locals: { title: '学校名', content: @team.school_name } %>
+    <%= render partial: 'team_record', locals: { title: '代表名', content: @team.representative_name } %>
+    <%= render partial: 'team_record', locals: { title: '監督名', content: @team.coach_name } %>
+    <%= render partial: 'team_record', locals: { title: '活動拠点', content: @team.activity_base } %>
+    <%= render partial: 'team_record', locals: { title: '活動日', content: @team.activity_day } %>
+    <%= render partial: 'team_record', locals: { title: '歴代記録', content: @team.historical_records } %>
+    <%= render partial: 'team_record', locals: { title: 'facebook_url', content: @team.facebook_url } %>
+    <%= render partial: 'team_record', locals: { title: 'instagram_url', content: @team.instagram_url } %>
+    <%= render partial: 'team_record', locals: { title: 'x_url', content: @team.x_url } %>
+    <%= render partial: 'team_record', locals: { title: 'お問い合わせ用メールアドレス', content: @team.email } %>
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to("戻る", admin_teams_path, class: "btn btn-secondary rounded") %>
+  <%= link_to("編集", edit_admin_team_path(@team), class: "btn btn-primary mx-1 rounded") %>
+  <%= link_to('削除', [:admin, @team, @team_article], method: :delete, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded") %>
+</div>

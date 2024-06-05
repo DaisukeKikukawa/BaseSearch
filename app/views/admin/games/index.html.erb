@@ -1,0 +1,40 @@
+<h1 class="mb-3">試合情報一覧</h1>
+
+<%= render "search_form" %>
+
+<div class="card my-4">
+  <div class="card-header">
+    <div class="card-tools">
+      <%= button_to("新規作成", new_admin_game_path, class: "btn btn-primary mr-2", method: :get) %>
+    </div>
+  </div>
+
+  <div id="games">
+    <div class="card-body table-responsive p-0">
+      <table class="table text-nowrap table-bordered">
+        <thead>
+          <tr>
+            <th><%= sort_link(@q, :id, "ID") %></th>
+            <th>主催側</th>
+            <th>対戦相手</th>
+            <th>球場</th>
+            <th>大会/大会名</th>
+            <th><%= sort_link(@q, :start_time, "ゲーム開始日時") %></th>
+            <th>試合タグ</th>
+            <th>記事</th>
+            <th>スコア（主催側 - 対戦相手）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @games.each do |game| %>
+            <%= render game %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>

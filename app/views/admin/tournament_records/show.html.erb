@@ -1,0 +1,9 @@
+<h1>大会/年次情詳細</h1>
+
+<%= render @tournament_record %>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to("戻る", admin_tournament_records_path, class: "btn btn-secondary rounded") %>
+  <%= link_to("編集", edit_admin_tournament_record_path(@tournament_record), class: "btn btn-primary mx-1 rounded") %>
+  <%= link_to('削除', [:admin, @tournament_record], data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded") %>
+</div>

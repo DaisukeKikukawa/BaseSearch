@@ -1,0 +1,11 @@
+<div class="mt-3">
+  <h1 class="border-start border-black border-3 ps-2 fw-bold mb-3"><%= @tournament_record.name %></h1>
+  <ul class="nav justify-content-center nav-tabs w-100 text-center">
+    <li class="nav-item w-50">
+      <%= link_to '試合日程', { filter: 'schedule' }, class: nav_link_active?('schedule') %>
+    </li>
+    <li class="nav-item w-50">
+      <%= link_to '試合結果', { filter: 'result' }, class: nav_link_active?('result') %>
+    </li>
+  </ul>
+</div>

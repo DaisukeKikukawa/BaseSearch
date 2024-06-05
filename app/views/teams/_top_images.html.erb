@@ -1,0 +1,11 @@
+<% if @team.team_image.present?%>
+  <div class="img-fluid" style="position: relative; z-index: -1">
+      <%= image_tag(@team.team_image, class: "w-100") %>
+  </div>
+<% end %>
+
+<% if @team.team_icon.present? %>
+  <div class="container" style="<%= team_icon_style(@team) %>">
+    <%= image_tag(@team.team_icon, class: "rounded-circle border border-2 border-black team_logo mx-auto d-block") %>
+  </div>
+<% end %>

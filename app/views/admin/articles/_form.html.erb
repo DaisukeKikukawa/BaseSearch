@@ -1,0 +1,50 @@
+<%= form_with(model: [@game, @game_article], url: url, method: method) do |form| %>
+  <% if @game_article.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@game_article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% @game_article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= form.fields_for :article, @article do |article_fields| %>
+            <div class="form-group">
+              <div>
+                <%= article_fields.label :title, "記事タイトル" %>
+                <span class="text-danger">※必須</span>
+                <%= article_fields.text_field :title, class: 'form-control' %>
+              </div>
+
+              <div>
+                <%= article_fields.label :content, "記事コンテンツ" %>
+                <span class="text-danger">※必須</span>
+                <%= article_fields.rich_text_area :content %>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= form.label :content, "記事タイプ" %>
+            <%= form.select :article_type,
+              GameArticle.article_types.keys.map {
+                |key| [I18n.t("activerecord.attributes.game_article.article_types.#{key}"), key]
+              },
+              {}, class: 'form-select'
+            %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= form.submit class: "btn btn-primary mb-3" %>
+  </div>
+<% end %>

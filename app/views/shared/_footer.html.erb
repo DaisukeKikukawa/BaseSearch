@@ -1,0 +1,30 @@
+<div class="fixed-bottom bg-light footer-border">
+  <div class="container">
+    <div class="row text-center py-3">
+      <div class="col d-flex flex-column align-items-center justify-content-center">
+        <%= link_to games_path, class: 'text-decoration-none text-black' do %>
+          <%= image_tag 'calendar-icon.png', alt: 'カレンダーアイコン', class: 'mb-2'%>
+          <p class="m-0">日程・結果</p>
+        <% end %>
+      </div>
+      <div class="col d-flex flex-column align-items-center justify-content-center">
+        <%= link_to team_search_path, class: 'text-decoration-none text-black' do %>
+          <%= image_tag 'search-icon.png', alt: '検索アイコン', class: "mb-2" %>
+          <p class="m-0">チーム検索</p>
+        <% end %>
+      </div>
+      <div class="col d-flex flex-column align-items-center justify-content-center">
+        <%= link_to tournaments_path, class: 'text-decoration-none text-black' do %>
+          <%= image_tag 'numbers-icon.png', alt: '数字アイコン', class: 'mb-2'%>
+          <p class="m-0">大会一覧</p>
+        <% end %>
+      </div>
+      <div class="col d-flex flex-column align-items-center justify-content-center">
+        <%= link_to grounds_path, class: 'text-decoration-none text-black' do %>
+          <%= image_tag 'ground-icon.png', alt: '球場アイコン', class: 'mb-2'%>
+          <p class="m-0">球場一覧</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

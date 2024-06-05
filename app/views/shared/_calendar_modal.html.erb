@@ -1,0 +1,17 @@
+
+<div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <nav class="navbar navbar-dark bg-dark py-3" data-bs-theme="dark">
+        <div class="container-fluid">
+          <div class="navbar-brand mx-auto position-absolute top-50 start-50 translate-middle">カレンダー</div>
+          <button type="button" class="btn-close light" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </nav>
+      <div class="modal-body">
+        <%= render 'shared/calendar', events: @games %>
+      </div>
+      <%= render 'shared/footer' %>
+    </div>
+  </div>
+</div>

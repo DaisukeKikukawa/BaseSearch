@@ -1,0 +1,46 @@
+<% games.each do |game| %>
+  <li>
+    <div class="game-info">
+      <% if game.tag_type != "no_tag" %>
+        <span class="game-info-tag badge ms-3 <%= tag_class(game.tag_type) %>">
+          <%= I18n.t("activerecord.attributes.game.tag_types.#{game.tag_type}") %>
+        </span>
+      <% end %>
+
+      <div class="row justify-content-between align-items-center">
+        <div class="col text-center p-0 team-name-width">
+          <span class="fs-3">
+          <% if game.home_teamable_type == "UnionTeam" %>
+            <%= wrap_and_ellipsizing_text(game.home_team.name, 6, 11).html_safe %>
+          <% else %>
+            <%= link_to wrap_and_ellipsizing_text(game.home_team.name, 6, 11).html_safe,
+                        team_path(game.home_team),
+                        class: 'team-link'
+          %>
+          <% end %>
+          </span>
+        </div>
+
+        <div class="col text-center">
+          <div class="row p-0 game-info-width">
+            <%= wrap_and_ellipsizing_text(game.tournament_record.name,12,23).html_safe %>
+            <%= wrap_and_ellipsizing_text(game.ground.name,nil,12).html_safe %>
+            <span class="fs-4"><b><%= display_game_info(game) %></b></span>
+            <span class="<%= game_status(game)[:class] %>"><%= game_status(game)[:text] %></span>
+          </div>
+          <% if button_label(game) %>
+            <div class="text-center mt-2">
+              <%= link_to button_label(game), game_path(game), class: 'btn btn-outline-secondary px-5' %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="col text-center p-0 team-name-width">
+          <span class="fs-3">
+            <%= formatted_away_team_name(game) %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </li>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="form-group"  data-controller="previews">
+  <%= form.label field, label_text %>
+  <%= render 'admin/shared/required', form: form, field: field %>
+  <%= form.file_field field,
+                      class: 'form-control',
+                      data: { previews_target: "input", action: "change->previews#previewImage" }
+  %>
+
+  <div class="mt-2">
+    <% if image.attached? && !form.object.new_record? %>
+      <%= image_tag image, class: "mb-2 w-25", data: { previews_target: "preview" } %>
+    <% else %>
+      <%= image_tag "noimage.png", class: "mb-2 w-25", data: { previews_target: "preview" } %>
+    <% end %>
+  </div>
+</div>

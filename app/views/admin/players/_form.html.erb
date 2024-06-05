@@ -1,0 +1,34 @@
+<%= form_with(model: [:admin, @player]) do |f| %>
+  <% if @player.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+      <ul>
+        <% @player.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= render 'select_form', form: f, label_text: "所属チーム", field: :team_id, collection: @teams %>
+          <%= render 'text_form', form: f, field: :name, label_text: '選手名' %>
+          <%= render 'text_form', form: f, field: :kana, label_text: 'フリガナ' %>
+          <%= render 'position_form', form: f %>
+          <%= render 'admin/shared/image_form', form: f, field: :player_image, label_text: '選手画像', image: @player.player_image %>
+          <%= render 'admin/shared/image_form', form: f, field: :uniform_image, label_text: 'ユニフォーム画像', image: @player.uniform_image %>
+          <%= render 'birth_date_form', form: f %>
+          <%= render 'handness_form', form: f %>
+          <%= render 'text_form', form: f, field: :alma_mater, label_text: '出身校' %>
+          <%= render 'text_form', form: f, field: :catchphrase, label_text: 'キャッチコピー' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div><%= f.submit class: "btn btn-primary mb-3" %></div>
+<% end %>

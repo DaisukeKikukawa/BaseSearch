@@ -1,0 +1,18 @@
+<div class="row justify-content-between align-items-center">
+  <div class="col-auto">
+    <i class="bi bi-chevron-left"></i>
+    <%= link_to '前月', tournaments_path(year: @month.prev_month.year, month: @month.prev_month.month), method: :get %>
+  </div>
+  <div class="col-auto">
+    <%= form_tag tournaments_path, method: :get do %>
+      <div class="d-flex">
+        <%= select_tag 'year', options_for_select((Date.current.year - 5..Date.current.year + 5).map { |year| ["#{year}年", year] }, selected: @month.year), class: 'form-select w-auto border-0', onchange: 'this.form.submit();' %>
+        <%= select_tag 'month', options_for_select((1..12).map { |month| ["#{month}月", month] }, selected: @month.month), class: 'form-select border-0 bg-transparent', onchange: 'this.form.submit();' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-auto">
+    <%= link_to '来月', tournaments_path(year: @month.next_month.year, month: @month.next_month.month), method: :get %>
+    <i class="bi bi-chevron-right"></i>
+  </div>
+</div>

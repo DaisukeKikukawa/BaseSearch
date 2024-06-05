@@ -1,0 +1,15 @@
+<h1>連合チーム詳細</h1>
+
+<div class="row">
+  <div class="card mt-4 mb-4 pt-4" style="width: 40rem;">
+    <%= render partial: 'union_team_record', locals: { title: 'ID', content: @union_team.id } %>
+    <%= render partial: 'union_team_record', locals: { title: '連合チーム名', content: @union_team.name } %>
+    <%= render partial: 'union_team_record', locals: { title: '連合しているチーム', content: @union_team.teams.map(&:name).join(' / ') } %>
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to("戻る", admin_union_teams_path, class: "btn btn-secondary rounded") %>
+  <%= link_to("編集", edit_admin_union_team_path(@union_team), class: "btn btn-primary mx-1 rounded") %>
+  <%= link_to('削除', [:admin, @union_team], method: :delete, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded") %>
+</div>

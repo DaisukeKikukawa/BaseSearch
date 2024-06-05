@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label><%= label_text %></label>
+  <% if [:home_teamable_id, :ground_id, :tournament_record_id].include?(field) %>
+    <span class="text-danger">※必須</span>
+  <% end %>
+  <%= form.select field,
+    collection.collect {
+      |item| [select_form_display_name(item), item.id]
+    },
+    { prompt: "選択してください" },
+    { class: "form-select" }
+  %>
+</div>

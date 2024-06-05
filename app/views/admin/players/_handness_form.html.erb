@@ -1,0 +1,25 @@
+<div class="row">
+  <label>投打</label>
+  <div class="col-sm-6">
+    <div class="form-group d-flex align-items-center">
+      <%= form.label :handedness, "投", class: "mb-0 mr-2" %>
+      <%= form.select :handedness,
+        Player.handednesses.keys.map {
+          |key| [I18n.t("activerecord.attributes.player.handednesses.#{key}"), key]
+        },
+        {}, class: 'form-select'
+      %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group d-flex align-items-center">
+      <%= form.label :handedness_bat, "打", class: "mb-0 mr-2" %>
+      <%= form.select :handedness_bat,
+        Player.handedness_bats.keys.map {
+          |key| [I18n.t("activerecord.attributes.player.handedness_bats.#{key}"), key]
+        },
+        {}, class: 'form-select'
+      %>
+    </div>
+  </div>
+</div>

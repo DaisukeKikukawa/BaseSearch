@@ -1,0 +1,70 @@
+<%= form_with(model: [:admin, @game]) do |f| %>
+  <% if @game.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+        <% @game.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>主催側</label>
+            <span class="text-danger">※必須</span>
+            <% selected_home_form_teamable = @game.home_teamable_type + @game.home_teamable_id.to_s if @game.persisted? %>
+            <%= f.select :home_teamable, @teams_and_union_teams.map { |team| [team.name,team.class.name.to_s + team.id.to_s ]},  { prompt: "選択してください",selected: selected_home_form_teamable },class: "form-select" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :away_teamable_id, "対戦相手" %>
+            <span class="text-danger">※必須</span>
+            <% if @game.persisted? %>
+              <% selected_away_form_teamable = @game.away_teamable_type + @game.away_teamable_id.to_s if @game.persisted? %>
+              <%= f.select :away_teamable, [['選択してください', '']] +@teams_and_union_teams.map { |team| [team.name,team.class.name.to_s + team.id.to_s ]}, {selected: selected_away_form_teamable },class: "form-select team-select" %>
+              <%= f.text_field :away_team_name,
+                class: "form-control team-text-field ",
+                placeholder: "市外チーム名を入力してください"
+              %>
+            <% else %>
+              <% selected_away_form_teamable = @game.away_teamable_type + @game.away_teamable_id.to_s if @game.persisted? %>
+              <%= f.select :away_teamable, @teams_and_union_teams.map { |team| [team.name,team.class.name.to_s + team.id.to_s ]}, { prompt: "選択してください",selected: selected_away_form_teamable },class: "form-select team-select" %>
+              <%= f.text_field :away_team_name,
+                class: "form-control team-text-field ",
+                placeholder: "市外チーム名を入力してください"
+              %>
+            <%end%>
+          </div>
+
+          <%= render 'select_form', form: f, label_text: 'グラウンド', field: :ground_id, collection: @grounds %>
+          <%= render 'select_form', form: f, label_text: '大会/大会名', field: :tournament_record_id, collection: @tournament_records %>
+          <%= render 'score_form', form: f %>
+
+          <div class="form-group">
+            <label>ゲーム開始日時</label>
+            <%= render 'admin/shared/required', form: f, field: :start_time %>
+            <%= f.datetime_field :start_time, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <label>試合タグ</label>
+            <%= f.select :tag_type,
+              Game.tag_types.keys.map {
+                |key| [I18n.t("activerecord.attributes.game.tag_types.#{key}"), key]
+              },
+              {}, class: 'form-select'
+            %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div><%= f.submit class: "btn btn-primary mb-3" %></div>
+<% end %>

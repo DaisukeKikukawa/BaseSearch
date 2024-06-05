@@ -1,0 +1,3 @@
+<% if form.object.class.validators_on(field).any? { |v| v.is_a?(ActiveModel::Validations::PresenceValidator) } %>
+  <span class="text-danger">※必須</span>
+<% end %>

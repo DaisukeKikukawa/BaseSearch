@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>桐生野球チームナビ</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "admin/application", "data-turbo-track": "reload" %>    
+
+    <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <%= favicon_link_tag('favicon.ico') %>
+
+  </head>
+
+  <body class="hold-transition sidebar-mini">
+      <div class="wrapper">
+      <%= render 'admin/shared/header' %>
+
+      <%= render 'admin/shared/sidebar' %>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <%= render 'admin/shared/flash_message' %>
+            <%= yield %>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <%= render 'admin/shared/footer' %>
+    </div>
+  </body>
+</html>

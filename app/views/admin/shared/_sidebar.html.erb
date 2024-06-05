@@ -1,0 +1,84 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="<%= admin_dashboard_index_path %>" class="brand-link">
+    <%= image_tag 'adminlte/AdminLTELogo.png', alt: 'AdminLTE Logo', class: 'brand-image img-circle elevation-3', style: 'opacity: .8' %>
+    <span class="brand-text font-weight-light">910Admin</span>
+  </a>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a href="<%= admin_dashboard_index_path %>" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>ダッシュボード</p>
+          </a>
+        </li>
+
+        <!-- Grounds -->
+        <li class="nav-item">
+          <a href="<%= admin_grounds_path %>" class="nav-link">
+            <i class="nav-icon fas fa-map"></i>
+            <p>球場</p>
+          </a>
+        </li>
+
+        <!-- Tournaments -->
+        <li class="nav-item">
+          <a href="<%= admin_tournaments_path %>" class="nav-link">
+            <i class="nav-icon fas fa-trophy"></i>
+            <p>大会</p>
+          </a>
+        </li>
+        <li class="nav-item ml-5 ">
+          <a href="<%= admin_tournament_records_path %>" class="nav-link p-1 w-auto">
+            <p>大会/大会名</p>
+          </a>
+        </li>
+
+        <!-- Teams -->
+        <li class="nav-item">
+          <a href="<%= admin_teams_path %>" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>チーム</p>
+          </a>
+        </li>
+        <li class="nav-item ml-5 ">
+          <a href="<%= admin_team_categories_path %>" class="nav-link p-1 w-auto">
+            <p>チームカテゴリー</p>
+          </a>
+        </li>
+
+        <!-- UnionTeams -->
+        <li class="nav-item">
+          <a href="<%= admin_union_teams_path %>" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>連合チーム</p>
+          </a>
+        </li>
+
+        <!-- Games -->
+        <li class="nav-item">
+          <a href="<%= admin_games_path %>" class="nav-link">
+            <i class="nav-icon fas fa-gamepad"></i>
+            <p>試合</p>
+          </a>
+        </li>
+
+        <!-- Players -->
+        <li class="nav-item">
+          <a href="<%= admin_players_path %>" class="nav-link">
+            <i class="nav-icon fa-solid fa-user"></i>
+            <p>選手</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

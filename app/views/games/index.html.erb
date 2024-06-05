@@ -1,0 +1,18 @@
+<% content_for(:page_title, '日程・結果') %>
+<div class="container">
+  <div id="inner">
+    <%= render "game_filter_header" %>
+
+    <% if @games_by_date.empty? %>
+      <div class="text-black-50 mt-3">
+        <p class="text-center">登録されている試合はありません。</p>
+      </div>
+    <% else %>
+      <% @games_by_date.each do |date, games| %>
+        <%= render 'game_list', date: date, games: games %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= stylesheet_link_tag "front/games", "data-turbo-track": "reload" %>

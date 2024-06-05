@@ -1,0 +1,8 @@
+<h1>選手編集</h1>
+
+<%= render "form", player: @player %>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to "戻る", admin_players_path, class: "btn btn-secondary mr-1 rounded" %>
+  <%= link_to "詳細", [:admin, @player], class: "btn btn-success rounded" %>
+</div>

@@ -1,0 +1,27 @@
+<div
+  class="serchBox mx-auto my-2 drop-down"
+  style="width: fit-content"
+>
+  <select
+    id="drop-down"
+    name="defensive-position"
+    class="border border-light-subtle rounded-2 border-2"
+  >
+    <option value="">すべて</option>
+    <% if @pitchers.present? %>
+      <option value="pitcher">投手</option>
+    <% end %>
+    <% if @catchers.present? %>
+      <option value="catcher">捕手</option>
+    <% end %>
+    <% if @infielders.present? %>
+      <option value="infielder">内野手</option>
+    <% end %>
+    <% if @outfielders.present? %>
+      <option value="outfielder">外野手</option>
+    <% end %>
+    <% if @etces.present? %>
+      <option value="etc">その他</option>
+    <% end %>
+  </select>
+</div>

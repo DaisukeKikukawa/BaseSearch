@@ -1,0 +1,8 @@
+<h1>記事情報編集</h1>
+
+<%= render "form", game: @game, game_article: @game_article, article: @article, url: admin_game_article_path(@game, @game_article), method: :patch %>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to "戻る", admin_games_path, class: "btn btn-secondary mr-1 rounded" %>
+  <%= link_to "詳細", admin_game_article_path(@game, @game_article), class: "btn btn-success rounded" %>
+</div>

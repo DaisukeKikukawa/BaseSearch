@@ -1,0 +1,29 @@
+<%= form_with(model: [:admin, @team_category]) do |f| %>
+  <% if @team_category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@team_category.errors.count, "error") %> prohibited this team_category from being saved:</h2>
+
+      <ul>
+        <% @team_category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <%= f.label :name, "カテゴリー名" %>
+            <%= render 'admin/shared/required', form: f, field: :name %>
+            <%= f.text_field :name , class: 'form-control'%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div><%= f.submit class: "btn btn-primary mb-3" %></div>
+<% end %>

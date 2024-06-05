@@ -1,0 +1,15 @@
+<div class="container-fluid bg-body-secondary p-3 mb-5">
+  <div class="d-flex justify-content-center">
+    <div class="row row-cols-auto">
+      <div class="col d-flex flex-column">
+        <%= link_to(image_tag("teams/instagram.png", class: "mb-0 sns_logo", alt: "Instagramロゴ"), @team.instagram_url) %>
+      </div>
+      <div class="col d-flex flex-column">
+        <%= link_to(image_tag("teams/facebook.png", class: "mb-0 sns_logo", alt: "Facebookロゴ"), @team.facebook_url) %>
+      </div>
+      <div class="col d-flex flex-column">
+        <%= link_to(image_tag("teams/x_logo.png", class: "mb-0 sns_logo", alt: "Xロゴ"), @team.x_url) %>
+      </div>
+    </div>
+  </div>
+</div>

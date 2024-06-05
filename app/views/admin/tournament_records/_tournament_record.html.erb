@@ -1,0 +1,42 @@
+<% if params[:action] == "index" %>
+  <tr id="<%= dom_id tournament_record %>">
+    <td><%= link_to tournament_record.id, [:admin, tournament_record] %></td>
+    <td>
+      <%= tournament_record.name %>
+      <%= link_to("(#{tournament_record.tournament.name})",
+                  admin_tournament_path(tournament_record.tournament),
+                  class: "text-decoration-none") %>
+    </td>
+    <td><%= tournament_record.started_at.strftime("%Y-%m-%d") %></td>
+    <td><%= tournament_record.ended_at.strftime("%Y-%m-%d") %></td>
+  </tr>
+<% else %>
+  <div class="row" id="<%= dom_id tournament_record %>">
+    <div class="card mt-4 mb-4" style="width: 40rem;">
+      <div class="card-header bg-secondary">ID</div>
+      <div class="card-block">
+        <p class="card-text p-4"><%= tournament_record.id%></p>
+      </div>
+
+      <div class="card-header bg-secondary">大会名（大会）</div>
+      <div class="card-block">
+        <p class="card-text p-4">
+          <%= tournament_record.name%>
+          <%= link_to("(#{tournament_record.tournament.name})",
+                      admin_tournament_path(tournament_record.tournament),
+                      class: "text-decoration-none") %>
+        </p>
+      </div>
+
+      <div class="card-header bg-secondary">開始日</div>
+      <div class="card-block">
+        <p class="card-text p-4"><%= tournament_record.started_at.strftime("%Y-%m-%d") %></p>
+      </div>
+
+      <div class="card-header bg-secondary">終了日</div>
+      <div class="card-block">
+        <p class="card-text p-4"><%= tournament_record.ended_at.strftime("%Y-%m-%d") %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

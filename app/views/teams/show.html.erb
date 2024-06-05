@@ -1,0 +1,22 @@
+<% content_for(:page_title, @team.name) %>
+
+<div id="inner">
+  <%= render partial: 'top_images' %>
+  <p class="fs-1 fw-bold text-center my-2 container-xl"><%= @team.name %></p>
+  <%= render partial: 'sns' %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <%= render partial: 'recruitment_position' %>
+          <%= render partial: 'team_introduction' %>
+          <%= render partial: 'summary' %>
+          <%= render partial: 'historical_records' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= stylesheet_link_tag "front/teams", "data-turbo-track": "reload" %>

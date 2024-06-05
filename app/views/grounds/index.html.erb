@@ -1,0 +1,37 @@
+<% content_for(:page_title, '球場一覧') %>
+<div class="container my-3">
+  <div class="row" id="inner">
+    <div class="d-flex flex-column justify-content-center align-items-center py-3">
+      <ul class="list-group">
+        <% @grounds.each do |ground| %>
+          <% if ground.image.present? %>
+            <li class="list-group-item border-0">
+              <%= image_tag ground.image.variant(resize: 300) %>
+            </li>
+          <% end %>
+          <li class="list-group-item border-0">
+            <h4 class="mb-2"><%= link_to(ground.name, ground.link_url, target: :_blank, rel: "noopener noreferrer") %></h4>
+          </li>
+          <li class="list-group-item border-0">
+            <i class="bi bi-geo-alt-fill"></i> 管理組織：<%= ground.administrative_organization %>
+          </li>
+          <li class="list-group-item border-0">
+            <i class="bi bi-map-fill"></i> 住所：<%= ground.address %>
+            <br>
+            <i class="text-primary"></i> <%= link_to("Googleマップで見る", ground.google_map_url, target: :_blank, rel: "noopener noreferrer") %>
+          </li>
+          <li class="list-group-item border-0">
+            <i class="bi bi-telephone-fill"></i> 電話番号：<%= ground.tel %>
+          </li>
+          <li class="list-group-item border-0">
+            <i class="bi bi-car-front-fill"></i> アクセス：<%= ground.access %>
+          </li>
+          <li class="list-group-item border-0">
+            <i class="bi bi-info-circle-fill"></i> 利用可能競技：<%= ground.sport %>
+          </li>
+          <hr>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<td class="d-flex flex-column">
+  <div>
+    <%= link_to '+追加', new_admin_game_article_path(game), class: "mb-2 btn btn-primary btn-sm" %>
+  </div>
+  <% game.game_articles.each do |game_article| %>
+    <div>
+      <%= link_to(game_article.article.title, admin_game_article_path(game, game_article), class: "mb-1") %>
+      <span><%= "[#{I18n.t("activerecord.attributes.game_article.article_types.#{game_article.article_type}")}]"%></span>
+    </div>
+  <% end %>
+</td>

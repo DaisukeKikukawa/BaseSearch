@@ -1,0 +1,20 @@
+<h1>記事詳細</h1>
+
+<div class="row">
+  <div class="card mt-4 mb-4 pt-4" style="width: 40rem;">
+    <%= render partial: 'article_record', locals: { title: '記事検索ラベル', content: @article.title } %>
+
+    <div class="card-header bg-secondary">記事コンテンツ</div>
+    <div class="card-block p-4">
+      <%= @article.content %>
+    </div>
+
+    <%= render partial: 'article_record', locals: { title: '記事タイプ', content: I18n.t("activerecord.attributes.game_article.article_types.#{@game_article.article_type}") } %>
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to("戻る", admin_games_path, class: "btn btn-secondary rounded") %>
+  <%= link_to("編集", edit_admin_game_article_path(@game, @game_article), class: "btn btn-primary mx-1 rounded") %>
+  <%= link_to('削除', admin_game_article_path(@game, @game_article), method: :delete, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded") %>
+</div>

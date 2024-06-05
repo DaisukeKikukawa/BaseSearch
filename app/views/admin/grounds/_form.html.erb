@@ -1,0 +1,34 @@
+<%= form_with(model: [:admin, @ground]) do |f| %>
+  <% if @ground.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@ground.errors.count, "error") %></h2>
+
+      <ul>
+        <% @ground.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= render 'text_form', form: f, field: :name, label_text: '球場名' %>
+          <%= render 'text_form', form: f, field: :link_url, label_text: '外部リンク' %>
+          <%= render 'text_form', form: f, field: :administrative_organization, label_text: '管理組織' %>
+          <%= render 'text_form', form: f, field: :tel, label_text: '電話番号' %>
+          <%= render 'text_form', form: f, field: :address, label_text: '住所' %>
+          <%= render 'admin/shared/image_form', form: f, field: :image, label_text: '画像', image: @ground.image %>
+          <%= render 'text_form', form: f, field: :google_map_url, label_text: 'GoogleMapURL' %>
+          <%= render 'text_form', form: f, field: :access, label_text: 'アクセス' %>
+          <%= render 'text_form', form: f, field: :sport, label_text: '利用可能競技' %>
+          <%= render 'public_select_form', form: f, field: :is_public, label_text: '公開設定' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div><%= f.submit class: "btn btn-primary mb-3" %></div>
+<% end %>

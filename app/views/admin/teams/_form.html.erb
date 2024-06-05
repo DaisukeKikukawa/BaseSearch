@@ -1,0 +1,42 @@
+<%= form_with(model: [:admin, @team]) do |f| %>
+  <% if @team.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+        <% @team.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= render 'text_form', form: f, field: :name, label_text: 'チーム名'%>
+          <%= render 'select_form', form: f, label_text: "チームカテゴリー", field: :team_category_id, collection: @team_categories %>
+          <%= render 'admin/shared/image_form', form: f, field: :team_image, label_text: 'チーム画像', image: @team.team_image %>
+          <%= render 'admin/shared/image_form', form: f, field: :team_icon, label_text: 'チームアイコン', image: @team.team_icon %>
+          <%= render 'admin/shared/image_form', form: f, field: :team_logo, label_text: 'チームロゴ', image: @team.team_logo %>
+          <%= render 'admin/shared/image_form', form: f, field: :team_uniform, label_text: 'ユニフォーム画像', image: @team.team_uniform %>
+          <%= render 'text_form', form: f, field: :recruitment_position, label_text: '募集ポジション' %>
+          <%= render 'text_area_form', form: f, field: :team_introduction, label_text: 'チーム紹介内容' %>
+          <%= render 'text_form', form: f, field: :school_name, label_text: '学校名' %>
+          <%= render 'text_form', form: f, field: :representative_name, label_text: '代表名' %>
+          <%= render 'text_form', form: f, field: :coach_name, label_text: '監督名' %>
+          <%= render 'text_form', form: f, field: :activity_base, label_text: '活動拠点' %>
+          <%= render 'text_form', form: f, field: :activity_day, label_text: '活動日' %>
+          <%= render 'text_area_form', form: f, field: :historical_records, label_text: '歴代記録' %>
+          <%= render 'text_form', form: f, field: :facebook_url, label_text: 'facebook_url' %>
+          <%= render 'text_form', form: f, field: :instagram_url, label_text: 'instagram_url' %>
+          <%= render 'text_form', form: f, field: :x_url, label_text: 'x_url' %>
+          <%= render 'text_form', form: f, field: :email, label_text: 'お問い合わせ用メールアドレス' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div><%= f.submit class: "btn btn-primary mb-3" %></div>
+<% end %>

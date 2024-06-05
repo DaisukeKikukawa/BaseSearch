@@ -1,0 +1,43 @@
+<% if params[:action] == "index" %>
+    <tr id="<%= dom_id tournament %>">
+        <td><%= link_to tournament.id, [:admin, tournament] %></td>
+        <td><%= tournament.name %></td>
+        <td><%= tournament.article.title %></td>
+        <td><%= tournament.article.content %></td>
+    </tr>
+<% else %>
+    <div class="row"  id="<%= dom_id tournament %>">
+        <div class="card mt-4 mb-4" style="width: 40rem;">
+            <div class="card-header bg-secondary">
+                ID
+            </div>
+            <div class="card-block">
+                <p class="card-text p-4">
+                    <%= tournament.id%>
+                </p>
+            </div>
+            <div class="card-header bg-secondary">
+                大会
+            </div>
+            <div class="card-block">
+                <p class="card-text p-4">
+                    <%= tournament.name%>
+                </p>
+            </div>
+            <div class="card-header bg-secondary">
+                記事検索ラベル
+            </div>
+            <div class="card-block">
+                <p class="card-text p-4">
+                    <%= tournament.article.title%>
+                </p>
+            </div>
+            <div class="card-header bg-secondary">
+                記事コンテンツ
+            </div>
+            <div class="card-block p-4">
+                <%= tournament.article.content %>
+            </div>
+        </div>
+    </div>
+<% end %>

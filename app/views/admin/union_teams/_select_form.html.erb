@@ -1,0 +1,4 @@
+<div class="form-group">
+  <%= form.label "#{field}_#{field_index}", label_text %>
+  <%= form.collection_select "#{field}[]", collection, :id, :name, { include_blank: '選択してください' }, class: 'form-control' %>
+</div>

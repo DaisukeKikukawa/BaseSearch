@@ -1,0 +1,38 @@
+<h1 class="mb-3">連合チーム一覧</h1>
+
+<%= render "search_form" %>
+
+<div class="card my-4">
+  <div class="card-header">
+    <div class="card-tools">
+      <%= button_to("新規作成", new_admin_union_team_path, class: "btn btn-primary mr-2", method: :get) %>
+    </div>
+  </div>
+
+  <div id="union_teams">
+    <div class="card-body table-responsive p-0">
+      <table class="table text-nowrap table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>連合チーム名</th>
+            <th>連合しているチーム</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @union_teams.each do |union_team| %>
+            <tr>
+              <td><%= link_to union_team.id, admin_union_team_path(union_team) %></td>
+              <td><%= union_team.name %></td>
+              <td><%= union_team.teams.map(&:name).join(' / ') %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>

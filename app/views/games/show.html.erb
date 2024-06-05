@@ -1,0 +1,24 @@
+<% content_for(:page_title, '試合詳細') %>
+<div id="inner" class="my-3">
+  <% @game.game_articles.each do |game_article| %>
+    <% if game_article.article_type == "match_results" && Time.current > end_time(@game) %>
+      <p>
+        <strong class="border-start border-black border-3">
+          <span class="ps-2"><%= game_article.article.title %></span>
+        </strong>
+        <%= game_article.article.content %>
+      </p>
+    <% else %>
+      <p>
+        <strong class="border-start border-black border-3">
+          <span class="ps-2"><%= game_article.article.title %></span>
+        </strong>
+        <%= game_article.article.content %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <%= render 'related_teams_section' %>
+</div>
+
+<%= stylesheet_link_tag "front/games", "data-turbo-track": "reload" %>

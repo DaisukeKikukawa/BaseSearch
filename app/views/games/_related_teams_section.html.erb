@@ -1,0 +1,76 @@
+<div class="related-teams-section">
+  <% if @game.home_teamable_type == "Team" &&  @game.away_teamable_type == "Team"%>
+      <p>
+        <strong class="border-start border-black border-3">
+          <span class="ps-2">関連チーム</span>
+        </strong>
+        <% home_team = @game.home_teamable %>
+        <% away_team = @game.away_teamable %>
+        <ul>
+          <p><li><%= link_to home_team.name, team_path(home_team),class: 'team-link' %></li></p>
+          <p><li><%= link_to away_team.name, team_path(away_team),class: 'team-link' %></li></p>
+        </ul>
+      </p>
+  <% elsif @game.home_teamable_type == "UnionTeam" &&  @game.away_teamable_type == "UnionTeam" %>
+      <p>
+        <strong class="border-start border-black border-3">
+          <span class="ps-2">関連チーム</span>
+        </strong>
+        <% home_union_team = @game.home_teamable %>
+        <% away_union_team = @game.away_teamable %>
+        <ul>
+          <p><li><%= home_union_team.name %></li></p>
+          <ul>
+            <% home_union_team.teams.each do |home_team| %>
+              <p><li><%= link_to home_team.name, team_path(home_team),class: 'team-link' %></li><p>
+            <% end %>
+          </ul>
+          <p><li><%= away_union_team.name %></li></p>
+          <ul>
+            <% away_union_team.teams.each do |away_team| %>
+              <p><li><%= link_to away_team.name, team_path(away_team),class: 'team-link' %></li><p>
+            <% end %>
+          </ul>
+        </ul>
+      </p>
+  <% else  %>
+      <p>
+        <strong class="border-start border-black border-3">
+          <span class="ps-2">関連チーム</span>
+        </strong>
+        <% if @game.home_teamable_type == "Team"%>
+          <% home_team = @game.home_teamable %>
+          <ul>
+            <p><li><%= link_to home_team.name, team_path(home_team),class: 'team-link' %></li></p>
+          </ul>
+        <% else %>
+          <% home_union_team = @game.home_teamable %>
+          <ul>
+            <p><li><%= home_union_team.name %></li></p>
+            <ul>
+              <% home_union_team.teams.each do |home_team| %>
+                <p><li><%= link_to home_team.name, team_path(home_team),class: 'team-link' %></li><p>
+              <% end %>
+            </ul>
+          </ul>
+        <% end %>
+
+        <% if @game.away_teamable_type == "Team"%>
+          <% away_team = @game.away_teamable %>
+          <ul>
+            <p><li><%= link_to away_team.name, team_path(away_team),class: 'team-link' %></li></p>
+          </ul>
+        <% else  %>
+          <% away_union_team = @game.away_teamable %>
+          <ul>
+            <p><li><%= away_union_team.name %></li></p>
+            <ul>
+              <% away_union_team.teams.each do |away_team| %>
+                <p><li><%= link_to away_team.name, team_path(away_team),class: 'team-link' %></li><p>
+              <% end %>
+            </ul>
+          <ul>
+        <% end %>
+      </p>
+  <% end %>
+</div>

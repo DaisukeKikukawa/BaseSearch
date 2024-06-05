@@ -1,0 +1,12 @@
+<div class="form-group">
+  <%= form.label :birth_date, "生年月日" %>
+  <div class="d-flex">
+    <%= form.date_field :birth_date, class: 'form-control' %>
+    <%= form.select :birth_date_visibility,
+      Player.birth_date_visibilities.keys.map {
+        |key| [I18n.t("activerecord.attributes.player.birth_date_visibilities.#{key}"), key]
+      },
+      {}, class: 'form-select w-25 ml-2'
+    %>
+  </div>
+</div>

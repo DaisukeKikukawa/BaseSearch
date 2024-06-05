@@ -1,0 +1,8 @@
+<h1>球場 編集</h1>
+
+<%= render "form", ground: @ground %>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to "戻る", admin_grounds_path, class: "btn btn-secondary mr-1 rounded" %>
+  <%= link_to "詳細", [:admin, @ground], class: "btn btn-success rounded" %>
+</div>

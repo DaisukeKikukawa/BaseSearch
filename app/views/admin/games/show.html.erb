@@ -1,0 +1,24 @@
+<h1>試合情報詳細</h1>
+
+<div class="row">
+  <div class="card mt-4 mb-4 pt-4" style="width: 40rem;">
+    <%= render partial: 'game_record', locals: { title: 'ID', content: @game.id } %>
+    <%= render partial: 'game_record', locals: { title: '主催側', content: @game.home_team.name } %>
+    <%= render partial: 'game_record', locals: { title: '対戦相手', content: @game.away_team.present? ? @game.away_team.name : @game.away_team_name } %>
+    <%= render partial: 'game_record', locals: { title: 'グラウンド', content: @game.ground.name } %>
+    <%= render partial: 'game_record', locals: { title: '大会/大会名', content: @game.tournament_record } %>
+    <%= render partial: 'game_record', locals: { title: 'ゲーム開始日時', content: @game.start_time.strftime("%Y-%m-%d %H:%M") } %>
+    <%= render partial: 'game_record', locals: { title: '試合タグ', content: I18n.t("activerecord.attributes.game.tag_types.#{@game.tag_type}") } %>
+    <%= render partial: 'game_record', locals: {
+                                                title: 'スコア（主催側 - 対戦相手）',
+                                                content: @game.home_team_score ? "#{@game.home_team_score} - #{@game.away_team_score}" : ""
+                                              }
+    %>
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to("戻る", admin_games_path, class: "btn btn-secondary rounded") %>
+  <%= link_to("編集", edit_admin_game_path(@game), class: "btn btn-primary mx-1 rounded") %>
+  <%= link_to('削除', [:admin, @game, @game_article], method: :delete, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded") %>
+</div>

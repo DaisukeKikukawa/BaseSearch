@@ -1,0 +1,13 @@
+<div class="card-header bg-secondary">
+  <%= title %>
+</div>
+<div class="card-block">
+  <p class="card-text p-4">
+    <% if content.is_a?(TournamentRecord) %>
+      <%= content.tournament.name %> /
+      <%= content.name %>
+    <% else %>
+      <%= content %>
+    <% end %>
+  </p>
+</div>

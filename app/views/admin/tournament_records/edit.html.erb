@@ -1,0 +1,8 @@
+<h1>大会/大会名編集</h1>
+
+<%= render "form", tournament_record: @tournament_record %>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to "戻る", admin_tournament_records_path, class: "btn btn-secondary mr-1 rounded" %>
+  <%= link_to "詳細", [:admin, @tournament_record], class: "btn btn-success rounded" %>
+</div>

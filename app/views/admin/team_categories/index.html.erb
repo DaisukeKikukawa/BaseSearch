@@ -1,0 +1,33 @@
+<h1 class="mb-3">チームカテゴリー一覧</h1>
+
+<%= render "search_form" %>
+
+<div class="card my-4">
+  <div class="card-header">
+    <div class="card-tools">
+      <%= button_to("新規作成", new_admin_team_category_path, class: "btn btn-primary mr-2", method: :get) %>
+    </div>
+  </div>
+
+    <div id="team_categories">
+    <div class="card-body table-responsive p-0">
+      <table class="table text-nowrap table-bordered">
+        <thead>
+          <tr>
+            <th><%= sort_link(@q, :id, "ID") %></th>
+            <th>チームカテゴリー名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @team_categories.each do |team_category| %>
+            <%= render team_category %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>

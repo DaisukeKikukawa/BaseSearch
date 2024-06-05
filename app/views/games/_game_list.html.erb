@@ -1,0 +1,17 @@
+<div id="<%= date.strftime('%Y%m%d') %>" class="bg-light p-3 rounded">
+  <h6 class="text-muted text-center mb-0"><%= date.strftime("%-m.%-d[%a]") %></h6>
+</div>
+<ul class="list-unstyled game-list">
+  <% if games.empty? %>
+    <div class="mt-3 text-black-50 mb-3">
+      <p class="text-center">本日の試合はありません。</p>
+      <%=
+        link_to "カレンダーから探す", "#",
+        class: "text-decoration-none text-center text-black-50 d-block",
+        data: { bs_toggle: "modal", bs_target: "#calendarModal" }
+      %>
+    </div>
+  <% else %>
+    <%= render "game_info", games: games %>
+  <% end %>
+</ul>

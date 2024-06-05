@@ -1,0 +1,32 @@
+<h1>選手詳細</h1>
+
+<div class="row">
+  <div class="card mt-4 mb-4 pt-4" style="width: 40rem;">
+    <%= render partial: 'player_record', locals: { title: 'ID', content: @player.id } %>
+    <%= render partial: 'player_record', locals: { title: '所属チーム', content: @player.team.name } %>
+    <%= render partial: 'player_record', locals: { title: '選手名', content: @player.name } %>
+    <%= render partial: 'player_record', locals: { title: 'フリガナ', content: @player.kana } %>
+    <%= render partial: 'player_record', locals: { title: 'ポジション', content: I18n.t("activerecord.attributes.player.positions.#{@player.position}") } %>
+    <%= render partial: 'player_record', locals: { title: 'サブポジション', content: @player.sub_positions } %>
+    <%= render partial: 'admin/shared/display_image', locals: { title: '選手画像', image: @player.player_image, resize: 200 } %>
+    <%= render partial: 'admin/shared/display_image', locals: { title: 'ユニフォーム画像', image: @player.uniform_image, resize: 200 } %>
+    <%= render partial: 'player_record', locals: { title: '生年月日', content: @player.birth_date } %>
+    <%= render partial: 'player_record', locals: { title: '生年月日（公開・非公開）', content: I18n.t("activerecord.attributes.player.birth_date_visibilities.#{@player.birth_date_visibility}") } %>
+    <%= render partial: 'player_record',
+              locals: {
+                title: '投打',
+                content: I18n.t("activerecord.attributes.player.handednesses.#{@player.handedness}") +
+                          "投" + "/" +
+                          I18n.t("activerecord.attributes.player.handedness_bats.#{@player.handedness_bat}") + "打"
+              }
+    %>
+    <%= render partial: 'player_record', locals: { title: '出身校', content: @player.alma_mater } %>
+    <%= render partial: 'player_record', locals: { title: 'キャッチコピー', content: @player.catchphrase } %>
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to("戻る", admin_players_path, class: "btn btn-secondary rounded") %>
+  <%= link_to("編集", edit_admin_player_path(@player), class: "btn btn-primary mx-1 rounded") %>
+  <%= link_to('削除', [:admin, @player], method: :delete, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded") %>
+</div>

@@ -1,0 +1,86 @@
+<%= search_form_for @q, url: admin_games_path, html: { method: :get } do |f| %>
+  <div class="d-flex flex-wrap">
+    <div class="form-group mr-3">
+      <%= f.label :id_eq, 'ID' %>
+      <%= f.search_field :id_eq %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :home_teamable_type_eq, '主催側チームタイプ' %>
+      <%= f.select :home_teamable_type_eq, options_for_select(@teamable_types, @home_teamable_type), {include_blank: '全て'}, class: "p-1 teamable-type-select", id: "home_teamable_type_select" %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :home_team_id_eq, '主催側' %>
+      <%= f.collection_select :home_teamable_id_eq, @teams, :id, :name,
+                              { include_blank: '全てのチーム' },
+                              class: "p-1", id: "home_teamable_select_all"
+      %>
+      <%= f.collection_select :home_teamable_id_eq, Team.all, :id, :name,
+                              { include_blank: 'チーム' },
+                              class: "p-1", id: "home_teamable_select_only_team"
+      %>
+      <%= f.collection_select :home_teamable_id_eq, UnionTeam.all, :id, :name,
+                              { include_blank: '連合チーム' },
+                              class: "p-1", id: "home_teamable_select_only_union_team"
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :away_teamable_type_eq, '対戦相手チームタイプ' %>
+      <%= f.select :away_teamable_type_eq, options_for_select(@teamable_types, @away_teamable_type), {include_blank: 'チームタイプ'}, class: "p-1 teamable-type-select", id: "away_teamable_type_select" %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :away_team_id_eq, '対戦相手' %>
+      <%= f.collection_select :away_teamable_id_eq, @teams_and_union_teams, :id, :name,
+                              { include_blank: '全てのチーム' },
+                              class: "p-1", id: "away_teamable_select_all"
+      %>
+      <%= f.collection_select :away_teamable_id_eq, Team.all, :id, :name,
+                              { include_blank: 'チーム' },
+                              class: "p-1", id: "away_teamable_select_only_team"
+      %>
+      <%= f.collection_select :away_teamable_id_eq, UnionTeam.all, :id, :name,
+                              { include_blank: '連合チーム' },
+                              class: "p-1", id: "away_teamable_select_only_union_team"
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :away_team_name_cont, '対戦相手(市外チーム)' %>
+      <%= f.search_field :away_team_name_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :ground_id_eq, '球場' %>
+      <%= f.collection_select :ground_id_eq, @grounds, :id, :name,
+                              { include_blank: '全ての球場' },
+                              class: "p-1"
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :tournament_record_id_eq, '大会/大会名' %>
+      <%= f.collection_select :tournament_record_id_eq, @tournament_records,
+                              :id, lambda { |tr| "#{tr.tournament.name} / #{tr.name}" },
+                              { include_blank: '全ての大会/大会名' },
+                              class: "p-1"
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :start_time_date_equals, 'ゲーム開始日時' %>
+      <%= f.date_field :start_time_gteq, class: "p-1" %> ~
+      <%= f.date_field :start_time_lteq_end_of_day, class: "p-1" %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :tag_type_eq, '試合タグ' %>
+      <%= f.collection_select :tag_type_eq,
+                            Game.tag_types.map { |k, v| [I18n.t("activerecord.attributes.game.tag_types.#{k}"), v] },
+                            :last, :first,
+                            { include_blank: '全ての試合タグ' },
+                            class: 'p-1'
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :article_title_cont, "記事タイトル" %>
+      <%= f.search_field :game_articles_article_title_cont %>
+    </div>
+  </div>
+
+  <%= f.submit '検索', class: 'btn btn-primary' %>
+  <%= link_to 'リセット', admin_games_path, class: 'btn btn-secondary' %>
+<% end %>

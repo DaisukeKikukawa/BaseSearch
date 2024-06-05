@@ -1,0 +1,13 @@
+<%= turbo_frame_tag 'calendar' do %>
+  <%= month_calendar events: @games do |date, events| %>
+    <b><%= date.day %></b>
+    <% unless events.blank? -%>
+      <br><br>
+      <%=
+        link_to "#{events.size.to_s}試合",
+        date_filter_path(date, params),
+        data: { turbo: false }
+      %>
+    <% end -%>
+  <% end %>
+<% end %>

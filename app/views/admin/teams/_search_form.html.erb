@@ -1,0 +1,42 @@
+<%= search_form_for @q, url: admin_teams_path, html: { method: :get } do |f| %>
+  <div class="d-flex flex-wrap">
+    <div class="form-group mr-3">
+      <%= f.label :id_eq, 'ID' %>
+      <%= f.search_field :id_eq %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :name_cont, 'チーム名' %>
+      <%= f.search_field :name_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :team_category_id_eq, 'チームカテゴリー' %>
+      <%= f.collection_select :team_category_id_eq, @team_categories, :id, :name,
+                              { include_blank: '全てのカテゴリー' },
+                              class: "p-1"
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :school_name_cont, '学校名' %>
+      <%= f.search_field :school_name_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :representative_name_cont, '代表名' %>
+      <%= f.search_field :representative_name_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :coach_name_cont, '監督名' %>
+      <%= f.search_field :coach_name_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :activity_base_cont, '活動拠点' %>
+      <%= f.search_field :activity_base_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :activity_day_cont, '活動日' %>
+      <%= f.search_field :activity_day_cont %>
+    </div>
+  </div>
+
+  <%= f.submit '検索', class: 'btn btn-primary' %>
+  <%= link_to 'リセット', admin_teams_path, class: 'btn btn-secondary', data: { turbolinks: false } %>
+<% end %>

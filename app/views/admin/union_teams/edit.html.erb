@@ -1,0 +1,54 @@
+<h1>連合チーム編集</h1>
+
+<%= form_with(model: [:admin, @union_team]) do |f| %>
+  <% if @union_team.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@union_team.errors.count, "error") %> prohibited this union team from being saved:</h2>
+
+      <ul>
+        <% @union_team.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.label :name, '連合チーム名' %>
+          <%= f.text_field :name, class: 'form-control' %>
+
+          <div class="form-group team-select mb-3">
+            <label>チーム</label><span class="text-danger"></span>
+            <%= select_tag 'team_ids[]', options_from_collection_for_select(@teams, :id, :name, selected: @union_team.teams.first&.id), include_blank: "選択して下さい", class: "form-select" %>
+          </div>
+
+          <div id="selectForms">
+            <% @union_team.teams[1..].each do |team| %>
+              <div class="form-group team-select mb-3">
+                <label>チーム</label><span class="text-danger"></span>
+                <%= select_tag 'team_ids[]', options_from_collection_for_select(@teams, :id, :name, selected: team.id), include_blank: true, class: "form-select" %>
+                <button type="button" class="btn btn-danger btn-sm remove-team">削除</button>
+              </div>
+            <% end %>
+          </div>
+          <button type="button" id="addSelectForm" class="btn btn-primary mb-3 mt-3">追加</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div><%= f.submit class: "btn btn-primary mb-3" %></div>
+<% end %>
+
+<div class="form-group align-items-center mb-2 mt-2" id="team-select-template" style="display:none;">
+  <%= select_tag 'team_ids[]', options_from_collection_for_select(@teams, :id, :name), include_blank: true, class:"form-select" %>
+  <button type="button" class="btn btn-danger btn-sm remove-team mt-3">削除</button>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to "戻る", admin_union_teams_path, class: "btn btn-secondary mr-1 rounded" %>
+  <%= link_to "詳細", [:admin, @union_team], class: "btn btn-success rounded" %>
+</div>

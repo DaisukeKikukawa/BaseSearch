@@ -1,0 +1,6 @@
+<div class="form-group">
+  <label><%= label_text %></label>
+  <%= form.select field, Ground.is_publics.keys.map {
+        |key| [I18n.t("activerecord.attributes.ground.is_publics.#{key}"), key]
+      },{}, { class: 'form-select' } %>
+</div>

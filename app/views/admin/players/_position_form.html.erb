@@ -1,0 +1,39 @@
+<div class="form-group">
+  <%= form.label :position, "ポジション" %>
+  <%= form.select :position,
+    Player.positions.keys.map {
+      |key| [I18n.t("activerecord.attributes.player.positions.#{key}"), key]
+    },
+    {}, class: 'form-select'
+  %>
+</div>
+
+<div id="subPositionForms">
+  <div class="form-group">
+    <%= form.label :sub_positions, "サブポジション" %>
+    <% if @player.sub_positions %>
+      <% display_sub_positions(@player.sub_positions, false).each do |sub_position| %>
+        <%= select_tag "player[sub_positions][]",
+              options_for_select(
+                [['設定しない', '']] + Player.positions.keys.map {
+                  |key| [I18n.t("activerecord.attributes.player.positions.#{key}"), key]
+                }, sub_position
+              ), class: 'form-select'
+        %>
+      <% end %>
+    <% else %>
+      <%= select_tag "player[sub_positions][]",
+              options_for_select(
+                [['設定しない', '']] + Player.positions.keys.map {
+                  |key| [I18n.t("activerecord.attributes.player.positions.#{key}"), key]
+                }
+              ), class: 'form-select'
+        %>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary" type="button" id="addSubPosition">＋追加</button>
+    <button class="btn btn-danger" type="button" id="deleteSubPosition">削除</button>
+  </div>
+</div>
+

@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label><%= label_text %></label>
+  <% if field == :tel %>
+    <%= render 'admin/shared/required', form: form, field: field %>
+    <%= form.telephone_field field, class: 'form-control' %>
+  <% elsif field == :link_url || field == :google_map_url %>
+    <%= render 'admin/shared/required', form: form, field: field %>
+    <%= form.url_field field, class: 'form-control' %>
+  <% else %>
+    <%= render 'admin/shared/required', form: form, field: field %>
+    <%= form.text_field field, class: 'form-control' %>
+  <% end %>
+</div>

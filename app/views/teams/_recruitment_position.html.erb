@@ -1,0 +1,17 @@
+<% if @team.recruitment_position.present? || @team.email.present? %>
+  <div class="container-xl">
+    <div class="p-4 mb-5 bg-body-tertiary text-center">
+      <% if @team.recruitment_position.present? %>
+        <p class="fs-4 fw-bold">現在、選手を募集中です。</p>
+        <p class="fs-6"><%= simple_format(@team.recruitment_position) %></p>
+      <% end %>
+
+      <% if @team.email.present? %>
+        <%= mail_to @team.email, nil, class: "text-decoration-none text-black" do %>
+          <%= @team.email %>
+          <div class="email_icon"></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

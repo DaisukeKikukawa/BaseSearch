@@ -1,0 +1,11 @@
+<% if params[:tournament_id].present? %>
+  <%= render 'game_status_filter' %>
+<% elsif params[:team_id].present? %>
+  <div id="game-filter-wrapper" class="position-sticky pt-2">
+    <%= render 'year_filter' %>
+  </div>
+<% else  %>
+  <div id="game-filter-wrapper" class="position-sticky pt-3">
+    <%= render 'month_year_filter' %>
+  </div>
+<% end %>

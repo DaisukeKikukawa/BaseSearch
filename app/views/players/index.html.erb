@@ -1,0 +1,28 @@
+<% content_for(:page_title, @team.name) %>
+<div class="container">
+  <div class="row player-inner" id="inner">
+    <div class="col">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="container member-content">
+          <% if @players.empty? %>
+            <div class="text-center text-black-50">
+              <p>登録されている選手はいません</p>
+            </div>
+          <% else %>
+            <%= render "position_select" %>
+            <ul class="list ps-0 my-4 list-unstyled">
+              <%= render partial: 'player_list_item', locals: { players: @pitchers, player_position: 'pitcher', player_position_title: '投手' } if @pitchers.present? %>
+              <%= render partial: 'player_list_item', locals: { players: @catchers, player_position: 'catcher', player_position_title: '捕手' } if @catchers.present? %>
+              <%= render partial: 'player_list_item', locals: { players: @infielders, player_position: 'infielder', player_position_title: '内野手' } if @infielders.present? %>
+              <%= render partial: 'player_list_item', locals: { players: @outfielders, player_position: 'outfielder', player_position_title: '外野手' } if @outfielders.present? %>
+              <%= render partial: 'player_list_item', locals: { players: @etces, player_position: 'etc', player_position_title: 'その他' } if @etces.present? %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= stylesheet_link_tag "front/players", "data-turbo-track": "reload" %>
+

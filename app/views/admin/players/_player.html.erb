@@ -1,0 +1,22 @@
+<tr id="<%= dom_id player %>">
+  <td><%= link_to player.id, [:admin, player] %></td>
+  <td>
+    <%= link_to(player.team.name, admin_team_path(player.team), class: "text-decoration-none") %>
+  </td>
+  <td><%= player.name %></td>
+  <td><%= player.kana %></td>
+  <td><%= I18n.t("activerecord.attributes.player.positions.#{player.position}") %></td>
+  <td><%= display_sub_positions(player.sub_positions).join('/') if player.sub_positions %></td>
+  <td><%= image_tag(player.player_image.variant(resize: 100)) if player.player_image.attached? %></td>
+  <td><%= image_tag(player.uniform_image.variant(resize: 100)) if player.uniform_image.attached? %></td>
+  <td>
+    <%= player.birth_date %>
+    <%= "(#{I18n.t("activerecord.attributes.player.birth_date_visibilities.#{player.birth_date_visibility}")})" %>
+  </td>
+  <td>
+    <%= I18n.t("activerecord.attributes.player.handednesses.#{player.handedness}") %>投 /
+    <%= I18n.t("activerecord.attributes.player.handedness_bats.#{player.handedness_bat}") %>打
+  </td>
+  <td><%= player.alma_mater %></td>
+  <td><%= player.catchphrase %></td>
+</tr>

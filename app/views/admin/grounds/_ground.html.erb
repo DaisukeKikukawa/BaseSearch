@@ -1,0 +1,13 @@
+<tr id="<%= dom_id ground %>">
+  <td><%= link_to ground.id, [:admin, ground] %></td>
+  <td><%= ground.name %></td>
+  <td><%= ground.link_url %></td>
+  <td><%= ground.administrative_organization %></td>
+  <td><%= ground.tel %></td>
+  <td><%= ground.address %></td>
+  <td><%= image_tag(ground.image.variant(resize: 200)) if ground.image.attached? %></td>
+  <td><%= ground.google_map_url %></td>
+  <td><%= ground.access %></td>
+  <td><%= ground.sport %></td>
+  <td><%= "#{I18n.t("activerecord.attributes.ground.is_publics.#{ground.is_public}")}" %></td>
+</tr>

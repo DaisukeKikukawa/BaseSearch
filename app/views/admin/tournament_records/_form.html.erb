@@ -1,0 +1,45 @@
+<%= form_with(model: [:admin, @tournament_record]) do |form| %>
+  <% if @tournament_record.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@tournament_record.errors.count, "error") %> prohibited this tournament_record from being saved:</h2>
+
+      <ul>
+        <% @tournament_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+
+          <%= render 'select_form', form: form, label_text: '大会', field: :tournament_id, collection: @tournaments %>
+
+          <div class="form-group">
+            <label>大会名</label>
+            <%= render 'admin/shared/required', form: form, field: 'name' %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <label>開催期間：開始日</label>
+            <%= render 'admin/shared/required', form: form, field: 'started_at' %>
+            <%= form.date_field :started_at, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <label>開催期間：終了</label>
+            <%= render 'admin/shared/required', form: form, field: 'ended_at' %>
+            <%= form.date_field :ended_at, class: 'form-control' %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div><%= form.submit class: "btn btn-primary mb-3" %></div>
+<% end %>

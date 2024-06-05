@@ -1,0 +1,12 @@
+<div class="card-header bg-secondary">
+  <%= title %>
+</div>
+<div class="card-block">
+  <p class="card-text p-4">
+    <% if content && content == @player.sub_positions %>
+      <%= display_sub_positions(content).join('/') %>
+    <% else %>
+      <%= content %>
+    <% end %>
+  </p>
+</div>

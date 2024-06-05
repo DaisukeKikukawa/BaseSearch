@@ -1,0 +1,22 @@
+<h1>球場詳細</h1>
+
+<div class="row">
+  <div class="card mt-4 mb-4" style="width: 40rem;">
+    <%= render partial: 'ground_record', locals: { title: '球場名', content: @ground.name } %>
+    <%= render partial: 'ground_record', locals: { title: '外部リンク', content: @ground.link_url } %>
+    <%= render partial: 'ground_record', locals: { title: '管理組織', content: @ground.administrative_organization } %>
+    <%= render partial: 'ground_record', locals: { title: '電話番号', content: @ground.tel } %>
+    <%= render partial: 'ground_record', locals: { title: '住所', content: @ground.address } %>
+    <%= render partial: 'admin/shared/display_image', locals: { title: '画像', image: @ground.image, resize: 400 } %>
+    <%= render partial: 'ground_record', locals: { title: 'GoogleMapURL', content: @ground.google_map_url } %>
+    <%= render partial: 'ground_record', locals: { title: 'アクセス', content: @ground.access } %>
+    <%= render partial: 'ground_record', locals: { title: '利用可能競技', content: @ground.sport } %>
+    <%= render partial: 'ground_record', locals: { title: '公開設定', content: I18n.t("activerecord.attributes.ground.is_publics.#{@ground.is_public}") } %>
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to("戻る", admin_grounds_path, class: "btn btn-secondary rounded") %>
+  <%= link_to("編集", edit_admin_ground_path(@ground), class: "btn btn-primary mx-1 rounded") %>
+  <%= link_to('削除', [:admin, @ground], data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger rounded") %>
+</div>

@@ -1,0 +1,17 @@
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <!-- Left navbar links -->
+  <ul class="navbar-nav ml-3">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+    </li>
+  </ul>
+  <!-- Right navbar links -->
+  <ul class="navbar-nav ml-auto mr-3">
+    <!-- Navbar Search -->
+    <li class="nav-item">
+      <%= link_to "ログアウト", destroy_admin_user_session_path, data: { turbo_method: :delete }, class: "btn btn-primary" %>
+    </li>
+  </ul>
+</nav>
+<!-- /.navbar -->

@@ -1,0 +1,63 @@
+<div id="header" class="sticky-top">
+  <nav class="navbar navbar-dark bg-dark py-3">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-brand mx-auto position-absolute top-50 start-50 translate-middle">
+        <% if content_for?(:page_title) %>
+          <%= yield :page_title %>
+        <% else %>
+          <%= image_tag 'logo.png', :size =>'133.88x18.75', alt: '検索アイコン' %>
+        <% end %>
+      </div>
+      <% if is_display_calendar?(controller_name) %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#calendarModal">
+          <span class="bi bi-calendar4-event"></span>
+        </button>
+      <% end %>
+  </nav>
+  <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header d-flex justify-content-center position-relative">
+      <%= image_tag 'logo.png', :size =>'180x30', alt: '検索アイコン', class: 'my-2' %>
+      <button type="button" class="btn-close btn-close-white position-absolute end-0 p-4" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+      <ul class="nav flex-column border-top border-light">
+        <li class="nav-item border-bottom border-light">
+          <a class="nav-link my-2 text-white" href="https://kiryu910.jp/">球都桐生News <i class="bi bi-box-arrow-up-right"></i></a>
+        </li>
+        <li class="nav-item border-bottom border-light">
+          <a class="nav-link my-2 text-white" href="https://www.facebook.com/profile.php?id=100090966537652">公式Facebook <i class="bi bi-box-arrow-up-right"></i></a>
+        </li>
+        <li class="nav-item border-bottom border-light">
+          <a class="nav-link my-2 text-white" href="https://twitter.com/kyutokiryu">公式X <i class="bi bi-box-arrow-up-right"></i></a>
+        </li>
+        <li class="nav-item border-bottom border-light">
+          <a class="nav-link my-2 text-white" href="https://www.instagram.com/kyutokiryu/">公式Instagram <i class="bi bi-box-arrow-up-right"></i></a>
+        </li>
+        <li class="nav-item border-bottom">
+          <a class="nav-link my-2 text-white" href="https://docs.google.com/forms/d/e/1FAIpQLSd382nXz2YfT5VNVf1iAbo1RIlm_JsCeBwnyMQUZstvhFl5yg/viewform" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <% if request.path.include?('/teams') %>
+    <div class="container-fluid text-center bg-white Small shadow">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-2 py-3 <%= "border-bottom border-black border-2" if current_page?(team_path(@team)) %>">
+          <%= link_to "チーム詳細", team_path(@team), class: "mb-0 text-black text-decoration-none" %>
+        </div>
+        <div class="col col-lg-2 py-3 <%= "border-bottom border-black border-2" if current_page?(team_players_path(@team)) %>">
+          <%= link_to "選手名鑑", team_players_path(@team), class: "mb-0 text-black text-decoration-none" %>
+        </div>
+        <div class="col col-lg-2 py-3 <%= "border-bottom border-black border-2" if current_page?(team_games_path(@team)) %>">
+          <%= link_to "日程・結果", team_games_path(@team), class: "mb-0 text-black text-decoration-none" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'shared/calendar_modal' if is_display_calendar?(controller_name) %>

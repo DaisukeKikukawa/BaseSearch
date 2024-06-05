@@ -1,0 +1,20 @@
+<div class="row justify-content-between align-items-center px-3">
+  <%= link_to '＜', {
+      controller: controller_name,
+      action: action_name,
+      year: @year_and_month.prev_month.year,
+      month: @year_and_month.prev_month.month
+    }, method: :get, class: 'col-auto text-decoration-none text-dark'
+  %>
+  <div class="col-auto">
+    <div class="fw-bold"><%= "#{@year_and_month.year}年#{@year_and_month.month}月" %></div>
+  </div>
+  <%=
+    link_to '＞', {
+        controller: controller_name,
+        action: action_name,
+        year: @year_and_month.next_month.year,
+        month: @year_and_month.next_month.month
+      }, method: :get, class: 'col-auto text-decoration-none text-dark'
+  %>
+</div>

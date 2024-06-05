@@ -1,0 +1,34 @@
+<div class="row justify-content-between align-items-center px-3">
+  <% if @year.year > Date.today.year - 5 %>
+    <%= link_to '＜', {
+        controller: controller_name,
+        action: action_name,
+        year: @year.prev_year.year,
+      }, method: :get, class: 'col-auto text-decoration-none text-dark'
+    %>
+  <% else %>
+    <span class='col-auto text-decoration-none text-dark' style='pointer-events: none;'>＜</span>
+  <% end %>
+
+  <div class="col-auto">
+    <%= form_tag request.path, method: :get do %>
+      <div class="d-flex">
+        <%= select_tag 'year',
+            options_for_select((Date.current.year - 5..Date.current.year + 5).map { |year| ["#{year}年", year] }, selected: @year.year),
+            class: 'form-select w-auto border-0 bg-transparent', onchange: 'this.form.submit();'
+        %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @year.year < Date.today.year + 5 %>
+    <%= link_to '＞', {
+        controller: controller_name,
+        action: action_name,
+        year: @year.next_year.year,
+      }, method: :get, class: 'col-auto text-decoration-none text-dark'
+    %>
+  <% else %>
+    <span class='col-auto text-decoration-none text-dark' style='pointer-events: none;'>＞</span>
+  <% end %>
+</div>

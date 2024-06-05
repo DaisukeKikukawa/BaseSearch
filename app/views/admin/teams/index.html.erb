@@ -1,0 +1,50 @@
+<h1 class="mb-3">チーム一覧</h1>
+
+<%= render "search_form" %>
+
+<div class="card my-4">
+  <div class="card-header">
+    <div class="card-tools">
+      <%= button_to("新規作成", new_admin_team_path, class: "btn btn-primary mr-2", method: :get) %>
+    </div>
+  </div>
+
+  <div id="games">
+    <div class="card-body table-responsive p-0">
+      <table class="table text-nowrap table-bordered">
+        <thead>
+          <tr>
+            <th><%= sort_link(@q, :id, "ID") %></th>
+            <th>チーム名</th>
+            <th>チームカテゴリー</th>
+            <th>チーム画像</th>
+            <th>チームアイコン</th>
+            <th>チームロゴ</th>
+            <th>ユニフォーム画像</th>
+            <th>募集ポジション</th>
+            <th>チーム紹介内容</th>
+            <th>学校名</th>
+            <th>代表名</th>
+            <th>監督名</th>
+            <th>活動拠点</th>
+            <th>活動日</th>
+            <th>歴代記録</th>
+            <th>facebook_url</th>
+            <th>instagram_url</th>
+            <th>x_url</th>
+            <th>お問い合わせ用メールアドレス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @teams.each do |team| %>
+            <%= render team %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>

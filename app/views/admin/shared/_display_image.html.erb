@@ -1,0 +1,8 @@
+<div class="card-header bg-secondary">
+  <%= title %>
+</div>
+<div class="card-block">
+  <p class="card-text p-4">
+    <%= image_tag(image.variant(resize: resize), class: 'mb-2 w-25' ) if image.attached? %>
+  </p>
+</div>

@@ -1,0 +1,29 @@
+<% content_for(:page_title, @team_category.name) %>
+<div class="container">
+  <div class="row team-search-inner" id="inner">
+    <div class="col">
+      <div class="d-flex flex-column justify-content-center align-items-center py-3">
+        <div class="vstack">
+          <% @teams.each do |team| %>
+            <div class="px-2 py-2 border-bottom category_container">
+              <%= link_to(team_path(team), class: "category_a fs-5 text-decoration-none text-black") do %>
+                <div class="row align-inner">
+                  <div class="col-3 category_logo category_wrapper">
+                    <%= image_tag(team.team_logo.variant(resize: 60), class: "category_img", alt: "チームロゴ") if team.team_logo.present? %>
+                  </div>
+                  <div class="col-9 category_wrapper">
+                    <p class="mb-0 category_name"><%= @team_category.name %></p>
+                    <h1><%= team.name %></h1>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= stylesheet_link_tag "front/team_search", "data-turbo-track": "reload" %>

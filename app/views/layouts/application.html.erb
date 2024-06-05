@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecruitRadar</title>
+    <title>桐生野球チームナビ<%= content_for?(:page_title) ? " | " + yield(:page_title) : "" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "front/application", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
+    <%= yield(:javascripts) if content_for?(:javascripts) %>
+    <%= display_meta_tags(default_meta_tags) %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <%= favicon_link_tag('favicon.ico') %>
+
+    <% if Rails.env.production? %>
+    <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24DHH30TK"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-X24DHH30TK');
+      </script>
+    <!-- Google tag (gtag.js) -->
+    <% end %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/header' %>
+    <div class="container">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
+    <%= render 'shared/footer' %>
+
+    <%= yield :splash %>
   </body>
 </html>

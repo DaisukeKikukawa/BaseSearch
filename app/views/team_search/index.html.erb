@@ -1,0 +1,16 @@
+<% content_for(:page_title, 'チームを探す') %>
+<div class="row team-search-inner" id="inner">
+  <div class="col">
+    <div class="d-flex flex-column justify-content-center align-items-center py-3">
+      <div class="vstack">
+        <% @team_categories.each do |team_category| %>
+          <div class="px-2 py-4 border-bottom category_container">
+            <%= display_team_category(team_category) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= stylesheet_link_tag "front/team_search", "data-turbo-track": "reload" %>

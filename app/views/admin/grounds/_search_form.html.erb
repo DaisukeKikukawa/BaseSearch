@@ -1,0 +1,31 @@
+<%= search_form_for @q, url: admin_grounds_path, html: { method: :get } do |f| %>
+  <div class="d-flex flex-wrap">
+    <div class="form-group mr-3">
+      <%= f.label :id_eq, 'ID' %>
+      <%= f.search_field :id_eq %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :name_cont, '球場名' %>
+      <%= f.search_field :name_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :administrative_organization_cont, '管理組織' %>
+      <%= f.search_field :administrative_organization_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :tel_cont, '電話番号' %>
+      <%= f.search_field :tel_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :address_cont, '住所' %>
+      <%= f.search_field :address_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :sport_cont, '利用可能競技' %>
+      <%= f.search_field :sport_cont %>
+    </div>
+  </div>
+
+  <%= f.submit '検索', class: 'btn btn-primary' %>
+  <%= link_to 'リセット', admin_grounds_path, class: 'btn btn-secondary' %>
+<% end %>

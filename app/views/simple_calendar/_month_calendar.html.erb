@@ -1,0 +1,53 @@
+<div class="simple-calendar">
+  <div class="calendar-heading row justify-content-between align-items-center py-3">
+    <div class="col-auto">
+      <%= link_to calendar.url_for_previous_view.gsub("/games?", '/games/calendar?'), remote: true do %>
+        <span class="bi bi-chevron-left"></span><%= t('simple_calendar.previous', default: 'Previous')%>
+      <% end %>
+    </div>
+    <div class="col text-center">
+      <button class="btn btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= calendar.start_date.year.to_s + "年" %>
+      </button>
+      <ul class="dropdown-menu">
+        <% ((Time.now.year - 5)..(Time.now.year + 2)).to_a.each do |year| %>
+          <li><%= link_to year.to_s + "年", url_for_year(calendar.start_date, year), class: "dropdown-item #{active_year_class?(calendar.start_date, year)}", remote: true %></li>
+        <% end %>
+      </ul>
+      <button class="btn btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= calendar.start_date.month.to_s + "月" %>
+      </button>
+      <ul class="dropdown-menu">
+        <% (1..12).to_a.each do |month| %>
+          <li><%= link_to month.to_s + "月", url_for_month(calendar.start_date, month), class: "dropdown-item #{active_month_class?(calendar.start_date, month)}", remote: true %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-auto">
+      <%= link_to calendar.url_for_next_view.gsub("/games?", '/games/calendar?'), remote: true do %>
+        <%= t('simple_calendar.next', default: 'Previous')%><span class="bi bi-chevron-right"></span>
+      <% end %>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+              <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

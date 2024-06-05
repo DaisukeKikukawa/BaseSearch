@@ -1,0 +1,57 @@
+<%= search_form_for @q, url: admin_players_path, html: { method: :get } do |f| %>
+  <div class="d-flex flex-wrap">
+    <div class="form-group mr-3">
+      <%= f.label :id_eq, 'ID' %>
+      <%= f.search_field :id_eq %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :team_id_eq, '所属チーム' %>
+      <%= f.collection_select :team_id_eq, @teams, :id, :name,
+                              { include_blank: '全てのカテゴリー' },
+                              class: "p-1"
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :name_cont, '選手名' %>
+      <%= f.search_field :name_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :kana_cont, 'フリガナ' %>
+      <%= f.search_field :kana_cont %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :position_eq, 'ポジション' %>
+      <%= f.collection_select :position_eq,
+                            Player.positions.map { |k, v| [I18n.t("activerecord.attributes.player.positions.#{k}"), v] },
+                            :last, :first,
+                            { include_blank: '全てのポジション' },
+                            class: 'p-1'
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :handedness_eq, '投' %>
+      <%= f.collection_select :handedness_eq,
+                            Player.handednesses.map { |k, v| [I18n.t("activerecord.attributes.player.handednesses.#{k}"), v] },
+                            :last, :first,
+                            { include_blank: '全て' },
+                            class: 'p-1'
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :handedness_bat_eq, '打' %>
+      <%= f.collection_select :handedness_bat_eq,
+                            Player.handedness_bats.map { |k, v| [I18n.t("activerecord.attributes.player.handedness_bats.#{k}"), v] },
+                            :last, :first,
+                            { include_blank: '全て' },
+                            class: 'p-1'
+      %>
+    </div>
+    <div class="form-group mr-3">
+      <%= f.label :alma_mater_cont, '出身校' %>
+      <%= f.search_field :alma_mater_cont %>
+    </div>
+  </div>
+
+  <%= f.submit '検索', class: 'btn btn-primary' %>
+  <%= link_to 'リセット', admin_players_path, class: 'btn btn-secondary' %>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>大会詳細</h1>
+
+<%= render @tournament %>
+
+<div>
+  <%= link_to "戻る", admin_tournaments_path, class: "btn btn-secondary rounded" %>
+  <%= link_to "編集", edit_admin_tournament_path(@tournament), class: "btn btn-primary mx-1 rounded" %>
+  <%= link_to "削除", [:admin, @tournament],data: { turbo_method: :delete, turbo_confirm: "削除しますか？" }, class: "btn btn-danger"%>
+</div>

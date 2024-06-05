@@ -1,0 +1,21 @@
+<tr id="<%= dom_id team %>">
+  <td><%= link_to team.id, [:admin, team] %></td>
+  <td><%= team.name %></td>
+  <td><%= team.team_category.name %></td>
+  <td><%= image_tag(team.team_image.variant(resize: 200)) if team.team_image.attached? %></td>
+  <td><%= image_tag(team.team_icon.variant(resize: 100)) if team.team_icon.attached? %></td>
+  <td><%= image_tag(team.team_logo.variant(resize: 100)) if team.team_logo.attached? %></td>
+  <td><%= image_tag(team.team_uniform.variant(resize: 100)) if team.team_uniform.attached? %></td>
+  <td><%= team.recruitment_position %></td>
+  <td><%= team.team_introduction %></td>
+  <td><%= team.school_name %></td>
+  <td><%= team.representative_name %></td>
+  <td><%= team.coach_name %></td>
+  <td><%= team.activity_base %></td>
+  <td><%= team.activity_day %></td>
+  <td><%= team.historical_records %></td>
+  <td><%= team.facebook_url %></td>
+  <td><%= team.instagram_url %></td>
+  <td><%= team.x_url %></td>
+  <td><%= team.email %></td>
+</tr>
