@@ -1,0 +1,46 @@
+.splash-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  background-color: #000;
+  margin: 0 auto;
+  font-family: "ヒラギノ角ゴシック ProN", "游ゴシック", sans-serif;
+}
+
+#splash {
+  position: fixed;
+  top: 45%;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  gap: 0px 3px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#splash img {
+  width: 50px;
+}
+
+#splash h1 {
+  font-size: 20px;
+}
+
+.fade-out {
+  animation: fade-out 1.1s ease-in-out; //フェードアウトかかる時間
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

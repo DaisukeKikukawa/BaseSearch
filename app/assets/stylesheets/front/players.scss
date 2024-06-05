@@ -1,0 +1,110 @@
+/* 選手名鑑 */
+.player-inner {
+  margin-top: 150px;
+}
+
+.member-content {
+  margin-top: 20px;
+}
+
+.player-detail {
+  font-size: 10px;
+}
+.player-wrap {
+  height: 70px;
+  width: 75px;
+  margin: 0 auto;
+}
+.player-row {
+  align-items: center;
+}
+
+.sns_logo {
+  width: 25px;
+}
+
+.team_logo {
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+select,
+option {
+  background: #fff;
+  color: #333;
+}
+
+#drop-down {
+  height: 40px;
+  width: 90px;
+  border-radius: 5px;
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+option {
+  margin: 0 auto;
+}
+
+#drop-down::after {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 8px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  z-index: -1;
+}
+
+select {
+  border: 2px solid #ccc;
+}
+
+.uniform-wrap {
+  position: relative;
+}
+
+.uniform-wrap img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.team_uniform {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.detail {
+  line-height: 1.3;
+  height: fit-content;
+  align-items: center;
+}
+
+.player-wrap {
+  height: fit-content;
+  margin: auto;
+}
+
+.player-img {
+  min-height: 60px;
+  min-width: 60px;
+}
+
+.name {
+  font-size: 12px;
+}
+
+.one-word {
+  width: fit-content;
+}
