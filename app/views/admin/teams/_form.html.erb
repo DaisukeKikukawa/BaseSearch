@@ -33,6 +33,7 @@
           <%= render 'text_form', form: f, field: :instagram_url, label_text: 'instagram_url' %>
           <%= render 'text_form', form: f, field: :x_url, label_text: 'x_url' %>
           <%= render 'text_form', form: f, field: :email, label_text: 'お問い合わせ用メールアドレス' %>
+          <%= render 'slug_select_form', form: f, label_text: "チームSlug", field: :slug_id, collection: @slugs %>
         </div>
       </div>
     </div>
@@ -40,3 +41,4 @@
 
   <div><%= f.submit class: "btn btn-primary mb-3" %></div>
 <% end %>
+<%= button_to '記事とSlugを同期', fetch_slugs_and_wp_articles_path, method: :post, class: "btn btn-primary mb-3" %>

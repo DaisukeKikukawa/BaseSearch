@@ -1,0 +1,47 @@
+<%# binding.pry %>
+<% if @wp_articles%>
+  <div class="container mt-3">
+    <% @wp_articles.each do |article| %>
+      <div class="article">
+        <img src="<%= article.thumbnail_url %>" alt="Image">
+          <a href="<%= article.article_url %>" class="content">
+            <div class="title"><%= article.title %></div>
+            <div class="date"><%= article.published_at.strftime('%Y-%m-%d') %></div>
+          </a>
+      </div>
+      <div class="article">
+          <img src="<%= article.thumbnail_url %>" alt="Image">
+          <div class="content">
+              <div class="title">タイトルが入りますタイトルが入りますタイトルが入りますタイ…</div>
+              <div class="date"><%= article.published_at.strftime('%Y-%m-%d') %></div>
+          </div>
+      </div>
+      <div class="article">
+          <img src="<%= article.thumbnail_url %>" alt="Image">
+          <div class="content">
+              <div class="title">タイトルが入りますタイトルが入りますタイトルが入りますタイ…</div>
+              <div class="date"><%= article.published_at.strftime('%Y-%m-%d') %></div>
+          </div>
+      </div>
+      <div class="article">
+          <img src="<%= article.thumbnail_url %>" alt="Image">
+          <div class="content">
+              <div class="title">タイトルが入りますタイトルが入りますタイトルが入りますタイ…</div>
+              <div class="date"><%= article.published_at.strftime('%Y-%m-%d') %></div>
+          </div>
+      </div>
+      <div class="article">
+          <img src="<%= article.thumbnail_url %>" alt="Image">
+          <div class="content">
+              <div class="title">タイトルが入りますタイトルが入りますタイトルが入りますタイ…</div>
+              <div class="date"><%= article.published_at.strftime('%Y-%m-%d') %></div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="d-flex justify-content-center pagy-footer">
+  <%= pagy_nav_custom(@pagy) %>
+</div>
+<%= stylesheet_link_tag "front/wp_articles", "data-turbo-track": "reload" %>

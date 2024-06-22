@@ -18,4 +18,5 @@
   <td><%= team.instagram_url %></td>
   <td><%= team.x_url %></td>
   <td><%= team.email %></td>
+  <td><%= team.slugs.map(&:name).join(", ") %></td>
 </tr>

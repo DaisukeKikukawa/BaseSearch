@@ -1,6 +1,6 @@
 class Admin::GamesController < Admin::BaseController
   before_action :set_game, only: %i[show edit update destroy]
-  before_action :set_mixed_teams
+  before_action :set_mixed_teams, only: %i[new edit create update show]
   before_action :set_home_teamable, only: %i[create update]
   before_action :set_away_teamable, only: %i[create update]
 
@@ -9,9 +9,7 @@ class Admin::GamesController < Admin::BaseController
     @teams = Team.all
     @grounds = Ground.all
     @tournament_records = TournamentRecord.all
-    @teamable_types = Game.teamable_types
-    @home_teamable_type = params.dig(:q, :home_teamable_type_eq)
-    @away_teamable_type = params.dig(:q, :away_teamable_type_eq)
+
     @q = Game.ransack(params[:q])
     @pagy, @games = pagy(@q.result
                             .includes(:ground, :tournament_record, :home_teamable, :away_teamable,

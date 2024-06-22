@@ -5,7 +5,7 @@ class CreateArticles < ActiveRecord::Migration[7.1]
       t.string :content, null: false
       t.references :belongable, polymorphic: true, null: false
       t.datetime :deleted_at
-
+      
       t.timestamps
     end
   end

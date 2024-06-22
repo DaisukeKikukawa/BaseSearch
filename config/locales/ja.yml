@@ -1,0 +1,54 @@
+ja:
+  helpers:
+    submit:
+      create: 作成
+      update: 更新
+  activerecord:
+    attributes:
+      game:
+        tag_types:
+          featured: 注目
+          no_tag: タグなし
+          final: 決勝
+          semi_final: 準決勝
+          live: LIVE
+          movie: 動画
+      game_article:
+        article_types:
+          match_results: 試合結果
+          highlights: 試合前情報(みどころ)
+      player:
+        positions:
+          no_position: なし
+          pitcher: 投手
+          catcher: 捕手
+          first_baseman: "一塁手"
+          second_baseman: "二塁手"
+          third_baseman: "三塁手"
+          shortstop: "遊撃手"
+          left_fielder: "左翼手"
+          center_fielder: "中堅手"
+          right_fielder: "右翼手"
+          representative: "代表"
+          coach: "監督"
+        handednesses:
+          right: 右
+          left: 左
+          switch: 両
+        handedness_bats:
+          right_bat: 右
+          left_bat: 左
+          switch_bat: 両
+        birth_date_visibilities:
+          hidden: "非公開"
+          visible: "公開"
+      ground:
+        is_publics:
+          published: "公開"
+          not_published: "非公開"
+  date:
+    abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
+  simple_calendar:
+    previous: "前月"
+    next: "翌月"
+    today: "今日"

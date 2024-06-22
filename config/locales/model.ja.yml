@@ -1,0 +1,100 @@
+ja:
+  activemodel:
+    models:
+      forms/admin/tournament_article_form: 大会記事
+    attributes:
+      forms/admin/tournament_article_form:
+        name: 大会名
+        title: タイトル
+        content: コンテンツ
+  activerecord:
+    models:
+      game: 試合
+      game_article: 試合記事
+      player: 選手
+      admin_users: 管理者
+      articles: 記事
+      game_articles: 試合記事
+      games: 試合
+      grounds: 球場
+      players: 選手
+      team_categories: チームカテゴリー
+      teams: チーム
+      tournament_records: 大会名
+      tournaments: 大会
+    errors:
+      messages:
+        blank: "を入力してください"
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      game_article:
+        article_type: 記事タイプ
+      player:
+        team: チーム
+        name: 選手名
+        kana: フリガナ
+        alma_mater: 出身校
+        sub_positions: サブポジション
+        positions:
+          pitcher: 投手
+          catcher: 捕手
+          infielder: 内野手
+          outfielder: 外野手
+        handedness:
+          right: 右
+          left: 左
+          switch: 両
+        handedness_bat:
+          right_bat: 右
+          left_bat: 左
+          switch_bat: 両
+      articles:
+        name: 大会名
+        title: タイトル
+      game:
+        home_team: ホームチーム
+        away_team_id: アウェイチーム
+        away_team_name: アウェイチーム
+        ground: 球場
+        tournament_record: 大会名
+        home_team_score: 主催側チーム得点
+        away_team_score: 対戦相手チーム得点
+        start_time: 開始時間
+        tag_type: タグ
+      ground:
+        name: 球場名
+        link_url: 外部リンク
+        administrative_organization: 管理組織
+        tel: 電話番号
+        address: 住所
+        google_map_url: GoogleMapURL
+        access: アクセス
+        sport: 利用可能競技
+      team_category:
+        name: カテゴリー名
+      team:
+        name: チーム名
+        team_category: チームカテゴリー
+        recruitment_position:
+        team_introduction: チーム紹介
+        team_summary:
+        school_name:
+        representative_name:
+        coach_name:
+        activity_base:
+        activity_day:
+        historical_records:
+      tournament_record:
+        tournament: 大会
+        started_at: 開催期間：開始日
+        ended_at: 開催期間：終了日
+        name: 大会名
+      tournament:
+        name: 大会名
+        title: 記事検索ラベル
+        content: 記事コンテンツ
+      union_team:
+        name: 連合チーム名

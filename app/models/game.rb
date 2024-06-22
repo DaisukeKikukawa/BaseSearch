@@ -13,10 +13,6 @@ class Game < ApplicationRecord
     away_teamable
   end
 
-  def self.teamable_types
-    [['チーム', 'Team'], ['連合チーム', 'UnionTeam']]
-  end
-
   validates :start_time, presence: true
   validate :different_teams
   validate :both_scores_present_or_absent
@@ -41,13 +37,13 @@ class Game < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     [
-      "id", "home_teamable_id", "away_teamable_id", "away_team_name", "ground_id",
-      "tournament_record_id", "start_time", "tag_type","home_teamable_type", "away_teamable_type"
+      "id", "home_team_id", "away_team_id", "away_team_name", "ground_id",
+      "tournament_record_id", "start_time", "tag_type",
     ]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["away_teamable", "game_articles", "ground", "home_teamable", "tournament_record"]
+    ["away_team", "game_articles", "ground", "home_team", "tournament_record"]
   end
 
   private

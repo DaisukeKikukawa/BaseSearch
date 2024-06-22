@@ -1,0 +1,10 @@
+<div class="form-group">
+  <label><%= label_text %></label>
+  <%= form.select field,
+    collection.collect {
+      |item| [item.name, item.id]
+    },
+    { prompt: "選択してください", selected: @team.slugs.map(&:id) },
+    { class: "form-select" }
+  %>
+</div>

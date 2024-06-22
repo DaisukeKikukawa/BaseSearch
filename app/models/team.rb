@@ -3,6 +3,12 @@ class Team < ApplicationRecord
   has_many :tournament_records
   has_many :players
   has_many :team_unions_teams
+  # WpArticle モデルとの関連付け
+  has_many :article_teams
+  has_many :wp_articles, through: :article_teams
+  # Slug モデルとの関連付け
+  has_many :team_slugs, dependent: :destroy
+  has_many :slugs, through: :team_slugs
   has_many :union_teams, through: :team_unions_teams
   has_many :games, as: :home_teamable, class_name: "Game"
   has_many :games, as: :away_teamable, class_name: "Game"

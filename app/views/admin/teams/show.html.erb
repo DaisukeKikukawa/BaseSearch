@@ -21,6 +21,7 @@
     <%= render partial: 'team_record', locals: { title: 'instagram_url', content: @team.instagram_url } %>
     <%= render partial: 'team_record', locals: { title: 'x_url', content: @team.x_url } %>
     <%= render partial: 'team_record', locals: { title: 'お問い合わせ用メールアドレス', content: @team.email } %>
+    <%= render partial: 'team_record', locals: { title: 'チームSlug', content: @team.slugs.map(&:name).join(", ") } %>
   </div>
 </div>
 

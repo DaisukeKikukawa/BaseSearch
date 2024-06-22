@@ -55,6 +55,9 @@
         <div class="col col-lg-2 py-3 <%= "border-bottom border-black border-2" if current_page?(team_games_path(@team)) %>">
           <%= link_to "日程・結果", team_games_path(@team), class: "mb-0 text-black text-decoration-none" %>
         </div>
+        <div class="col col-lg-2 py-3 <%= "border-bottom border-black border-2" if current_page?(team_wordpress_articles_path(@team)) %>">
+          <%= link_to "記事", team_wordpress_articles_path(@team), class: "mb-0 text-black text-decoration-none" %>
+        </div>
       </div>
     </div>
   <% end %>
