@@ -11,13 +11,10 @@
 カテゴリーを超えて様々な球都桐生のリアルタイム野球情報を得ることができます。
 
 
-## 3.ER 図
-![image](https://github.com/SayuriOkuyama/VegEvery/assets/134520812/ef2461d9-aaff-4a47-8637-fa510c0d1645)
+## 2.ER 図
+![image](https://github.com/DaisukeKikukawa/910kiryu/blob/develop/erd.png)
 
-## 4.インフラ構成図
-![VegEvery](https://github.com/SayuriOkuyama/VegEvery/assets/134520812/47780094-b625-4118-9a60-44209875c8b6)
-
-## 5. 画面遷移図
+## 3. 画面遷移図
 
 ![画面遷移図](https://github.com/SayuriOkuyama/VegEvery/assets/134520812/86e39820-7016-495c-913e-eeff2ff38552)
 
