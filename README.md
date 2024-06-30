@@ -15,8 +15,4 @@
 ## 2.ER 図
 ![image](https://github.com/DaisukeKikukawa/910kiryu/blob/develop/erd.png)
 
-## 3.画面遷移図
-
-![画面遷移図](https://github.com/SayuriOkuyama/VegEvery/assets/134520812/86e39820-7016-495c-913e-eeff2ff38552)
-
-## 4.機能一覧（作成中）
+## 3.機能一覧（作成中）
